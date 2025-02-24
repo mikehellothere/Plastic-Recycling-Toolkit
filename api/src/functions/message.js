@@ -7,7 +7,7 @@ app.http('message', {
         return {
             status: 200,
             headers: { "Content-Type": "application/json" }, // Ensure correct response type
-            body: JSON.stringify({ body: "Hello, from the API!" }) // Change "body" key to "message"
+            body: JSON.stringify({ body: "Enjoy the film sash and els!" }) // Change "body" key to "message"
         };
     }
 });
