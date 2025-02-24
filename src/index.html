@@ -5,33 +5,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Plastic Recyling JavaScript Test App</title>
+    <title>Plastic Recycling JavaScript Test App</title>
+    <style>
+        /* Add some basic styling for the button */
+        #startCameraBtn {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #startCameraBtn:hover {
+            background-color: #45a049;
+        }
+
+        /* Optional: Styling for the video element */
+        #video {
+            width: 100%;
+            max-width: 600px;
+            margin-top: 20px;
+            border: 2px solid #ddd;
+        }
+    </style>
 </head>
 
 <body>
     <main>
-    <h1>Plastic Recylcing Javascript Test App</h1>
-    <p>API TEST: <b id="name">...</b></p>
+        <h1>Plastic Recycling JavaScript Test App</h1>
+        <p>API TEST: <b id="name">...</b></p>
+        <!-- Start Camera Button -->
+        <button id="startCameraBtn">Start Camera</button>
+        <video id="video" autoplay></video>
     </main>
 
     <script>
-   // (async function() {
-    //    const { text } = await( await fetch(`/api/message`)).json();
-    //    document.querySelector('#name').textContent = text;
-   // }());
-   (async function() {
-    try {
-        const response = await fetch(`/api/message`);
-        const data = await response.json(); // Ensure parsing is correct
-        console.log("API Response:", data); // Debugging output
-        document.querySelector('#name').textContent = data.body; // Use "message" instead of "body"
-    } catch (error) {
-        console.error("Error fetching API:", error);
-    }
-    })();
+        (async function() {
+            try {
+                const response = await fetch(`/api/message`);
+                const data = await response.json();
+                console.log("API Response:", data);
+
+                // Show message from API response
+                document.querySelector('#name').textContent = data.body;
+
+                // Attach event listener to start camera button
+                document.getElementById('startCameraBtn').addEventListener('click', startCamera);
+
+            } catch (error) {
+                console.error("Error fetching API:", error);
+            }
+        })();
+
+        // Function to access the camera
+        async function startCamera() {
+            try {
+                // Request access to the camera
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                document.getElementById("video").srcObject = stream;
+            } catch (error) {
+                console.error("Error accessing the camera:", error);
+                alert("Camera access denied or not supported.");
+            }
+        }
     </script>
-<h3> HNELLO</h3>
-<p>I am writing things which will show on screen</p>
 </body>
 
 </html>
+
+
