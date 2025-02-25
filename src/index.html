@@ -64,7 +64,9 @@
         async function startCamera() {
             try {
                 // Request access to the camera
-                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                // const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                const stream = await navigator.mediaDevices.getUserMedia({video: { facingMode: { exact: "environment" } }
+});
                 document.getElementById("video").srcObject = stream;
             } catch (error) {
                 console.error("Error accessing the camera:", error);
