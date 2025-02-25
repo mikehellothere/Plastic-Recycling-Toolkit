@@ -5,11 +5,12 @@
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
-  background-color: #b73737; /* This red background might be too harsh; you can adjust */
-  color: white; /* Ensure text is readable on the red background */
-  height: 100%; /* Ensure full height */
+    margin: 0;
+    padding: 0;
+    /* background-color: #b73737; /* This red background might be too harsh; you can adjust */
+    background-color: #a750c7;
+    color: white; /* Ensure text is readable on the red background */
+    height: 100%; /* Ensure full height */
 }
 
 main {
